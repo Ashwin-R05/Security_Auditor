@@ -26,3 +26,7 @@ print("User             :", result.stdout.strip())
 print("user ID          :", user_id)
 print("root user        :", is_root)
 
+if is_root:
+	print("Status           : Running as a root user")
+else :
+	print("Status           : Running as a non-root user")
