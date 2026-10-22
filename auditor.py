@@ -1,5 +1,6 @@
 import subprocess
 import os
+import stat
 with open ("/etc/os-release","r") as file:
 	lines = file.readlines()
 os_name = " "
@@ -30,3 +31,11 @@ if is_root:
 	print("Status           : Running as a root user")
 else :
 	print("Status           : Running as a non-root user")
+
+path = "/etc/shadow"
+
+metadata = os.stat(path)
+mode = stat.S_IMODE(metadata.st_mode)
+
+print("File:", path)
+print("Permission mode:", mode)
