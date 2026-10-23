@@ -7,6 +7,10 @@ os_name = " "
 version = " "
 user_id = os.geteuid()
 is_root = (user_id == 0)
+path = "/etc/shadow"
+metadata = os.stat(path)
+mode = stat.S_IMODE(metadata.st_mode)
+
 for line in lines:
 	if line.startswith("NAME="):
 		os_name=line.split("=",1)[1].strip().strip('"')
@@ -32,10 +36,5 @@ if is_root:
 else :
 	print("Status           : Running as a non-root user")
 
-path = "/etc/shadow"
-
-metadata = os.stat(path)
-mode = stat.S_IMODE(metadata.st_mode)
-
-print("File:", path)
-print("Permission mode:", mode)
+print("File             :", path)
+print("Permission mode  :", mode)
