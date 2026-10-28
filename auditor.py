@@ -1,3 +1,4 @@
+
 import subprocess
 import os
 import stat
@@ -25,16 +26,21 @@ result = subprocess.run(
 print("================================")
 print("  MY SECURITY AUDITOR SESSION")
 print("================================")
-print("Operating System :", os_name)
-print("Version          :", version)
-print("User             :", result.stdout.strip())
-print("user ID          :", user_id)
-print("root user        :", is_root)
+print("Operating System   :", os_name)
+print("Version            :", version)
+print("User               :", result.stdout.strip())
+print("user ID            :", user_id)
+print("root user          :", is_root)
 
 if is_root:
-	print("Status           : Running as a root user")
+	print("Status            : Running as a root user")
 else :
-	print("Status           : Running as a non-root user")
+	print("Status            : Running as a non-root user")
 
-print("File             :", path)
-print("Permission mode  :", mode)
+print("File               :", path)
+print("Permission mode    :", mode)
+
+def check_permissions(path):
+	print("Shadow permissions :", oct(check_permissions("/etc/shadow")))
+	print("Passwd permissions :", oct(check_permissions("/etc/passwd")))
+	return 0
