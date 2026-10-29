@@ -41,6 +41,7 @@ print("File               :", path)
 print("Permission mode    :", mode)
 
 def check_permissions(path):
+	metadata = os.stat(path)
+	mode = stat.S_IMODE(metadata.st_mode)
 	print("Shadow permissions :", oct(check_permissions("/etc/shadow")))
 	print("Passwd permissions :", oct(check_permissions("/etc/passwd")))
-	return 0
